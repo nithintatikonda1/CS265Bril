@@ -1,0 +1,40 @@
+# which benchmarks to run
+benchmarks = '../../benchmarks/**/*.bril'
+# how to extract the performance metric from stderr
+extract = 'total_dyn_inst: (\d+)'
+
+[runs.baseline]
+pipeline = [
+  "bril2json",
+  "brili -p {args}",
+]
+
+[runs.task_one]
+pipeline = [
+  "bril2json",
+  "python3 local_value_numbering.py",
+  "python3 local_dead_code.py",
+  "python3 trivial_dead_code.py",
+  "brili -p {args}",
+]
+
+[runs.local_value_numbering]
+pipeline = [
+  "bril2json",
+  "python3 local_value_numbering.py",
+  "brili -p {args}",
+]
+
+[runs.trivial_dead_code]
+pipeline = [
+  "bril2json",
+  "python3 trivial_dead_code.py",
+  "brili -p {args}",
+]
+
+[runs.local_dead_code]
+pipeline = [
+  "bril2json",
+  "python3 local_dead_code.py",
+  "brili -p {args}",
+]
