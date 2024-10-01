@@ -1,0 +1,14 @@
+@main() {
+  a: int = const 1;
+  b: int = const 2;
+  g: int = const 4;
+.lbl:
+  b: int = add a b;
+  c: int = id b;
+  d: bool = const false;
+  e: bool = and d d;
+  f: bool = le b a;
+  g: int = const 5;
+  h: int = add a g;
+  print b;
+}
