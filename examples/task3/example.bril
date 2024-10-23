@@ -1,0 +1,12 @@
+@main {
+  cond: bool = const false;
+  b: int = const 47;
+.begin:
+  br cond .end .right;
+.right:
+  a: int = id b;
+  cond: bool = const true;
+  jmp .begin;
+.end:
+  print cond;
+}
