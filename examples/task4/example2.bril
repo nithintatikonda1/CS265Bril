@@ -1,0 +1,20 @@
+@main {
+  cond: bool = const false;
+  a: int = const 20;
+  b: ptr<int> = alloc a;
+  c: int = const 30;
+  store b a;
+.begin:
+  br cond .left .right;
+.left:
+  store b c;
+  cond: bool = const true;
+  jmp .end;
+.right:
+  store b c;
+  cond: bool = const true;
+  jmp .end;
+.end:
+  d: int = load b;
+  print cond;
+}

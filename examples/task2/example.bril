@@ -1,14 +1,18 @@
-@main() {
+@main {
+  a: int = const 47;
+  cond: bool = const true;
+  d: int = const 1;
+  e: int = add d d;
+  br cond .left .right;
+.left:
   a: int = const 1;
   b: int = const 2;
-  g: int = const 4;
-.lbl:
-  b: int = add a b;
-  c: int = id b;
-  d: bool = const false;
-  e: bool = and d d;
-  f: bool = le b a;
-  g: int = const 5;
-  h: int = add a g;
-  print b;
+  jmp .end;
+.right:
+  a: int = const 2;
+  jmp .end;
+.end:
+  c: int = add a b;
+  print a;
+  print e;
 }
